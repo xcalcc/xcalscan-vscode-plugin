@@ -1,0 +1,59 @@
+{
+    "issueCount": 49,
+    "ruleSet": {
+        "S": {
+            "issueCount": 17,
+            "priority": {
+                "HIGH": 12,
+                "MEDIUM": 5
+            },
+            "rule": {
+                "POS34-C": {
+                    "issueCount": 1,
+                    "priority": {
+                        "MEDIUM": 1
+                    }
+                },
+                "MEM35-C": {
+                    "issueCount": 1,
+                    "priority": {
+                        "MEDIUM": 1
+                    }
+                },
+                "STR02-C": {
+                    "issueCount": 1,
+                    "priority": {
+                        "HIGH": 1
+                    }
+                }
+            }
+        },
+        "X": {
+            "issueCount": 32,
+            "priority": {
+                "HIGH": 15,
+                "MEDIUM": 17
+            },
+            "rule": {
+                "UIV": {
+                    "issueCount": 6,
+                    "priority": {
+                        "MEDIUM": 6
+                    }
+                },
+                "NPD": {
+                    "issueCount": 8,
+                    "priority": {
+                        "HIGH": 8
+                    }
+                },
+                "AOB": {
+                    "issueCount": 5,
+                    "priority": {
+                        "MEDIUM": 5
+                    }
+                }
+            }
+        }
+    }
+}

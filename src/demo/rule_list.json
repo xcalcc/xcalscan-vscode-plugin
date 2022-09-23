@@ -1,0 +1,247 @@
+{
+    "status": "success",
+    "dataVersion": {
+        "xcalscan_rule_version": "V1.91-0506",
+        "copyright": "(C) 2021 Xcalibyte Inc."
+    },
+    "counts": 126,
+    "rules": [
+        {
+            "master_id": 17,
+            "category": "ROBUSTNESS",
+            "language": "c,c++,java",
+            "code": "NPD",
+            "name": "Null pointer dereference",
+            "desc": "The program is accessing memory through a pointer with NULL value. This could cause a segmentation fault or unpredictable program behavior.",
+            "msg_templ": "In file ${so.filename}, line ${so.line}, an NPD defect has been detected in function ${so.func} for variable ${so.var}. Such variable has a value of zero.",
+            "severity": "H",
+            "likelihood": "L",
+            "cost": "M",
+            "standards": {
+                "cwe": [
+                    "476"
+                ]
+            },
+            "csv_string": [
+                "NPD0"
+            ],
+            "ruleSet": {
+                "id": "X",
+                "code": "BUILTIN",
+                "displayName": "XCALIBYTE"
+            },
+            "details": "#### Abstract\nThe program is accessing memory through a pointer with a NULL value. This will cause a segmentation fault or unpredictable program behavior. This vulnerability is equivalent to EXP34-C\n\n#### Explanation\nOn a system with memory protection, such as Linux, dereferencing a null pointer will cause a segmentation fault. For embedded systems, it will cause unpredicted program behavior. In Java, a null pointer dereference will trigger a null pointer exception.\n",
+            "examples": {
+                "good": {
+                    "c": [
+                        "extern int bar(int);\n\nint assign(int* a)\n{\n int i;\n if (a != 0)\n i = bar(*a); // dereference a\n else {\n // handle error and exit gracefully (such exit program)\n exit(1);\n }\n return i;\n}\n\nint foo(void)\n{\n int *p = 0; // p as a pointer has been initialized to 0 (null)\n assign(p);\n}"
+                    ],
+                    "java": [
+                        "class User {\n public String getName() {\n return null;\n }\n}\n\nclass Bar {\n private User findUser(String uid) {\n if (user.containsKey(uid)) {\n return user.get(uid);\n }\n else\n return null;\n }\n public void Npd(String uid) {\n // program continues\n // ...\n User user = findUser(uid); \n if (user == null) {\n throw new RuntimeException(\\\"Null String\\\");\n }\n String getName() {\n return null;\n }\n }\n}"
+                    ]
+                },
+                "bad": {
+                    "c": [
+                        "extern int bar(int);\n\nint assign(int* a)\n{\n int i = bar(*a) // dereference a\n return i;\n}\n\nint foo(void)\n{\n int *p = 0; // p as a pointer has been initialized to 0 (null)\n assign(p);\n}"
+                    ],
+                    "java": [
+                        "class User {\n public String getName() {\n return null;\n }\n}\n\nclass Bar {\n private User findUser(String uid) {\n if (user.containsKey(uid)) {\n return user.get(uid);\n }\n else\n return null;\n }\n public void Npd(String uid) {\n // program continues\n // ...\n User user = findUser(uid); // Throws NPE if \\\"user\\\" has not been properly initialized\n String getName() {\n return null;\n }\n }\n}"
+                    ]
+                }
+            }
+        },
+        {
+            "master_id": 18,
+            "category": "BAD_PRACTICE",
+            "language": "c,c++,java",
+            "code": "RCD",
+            "name": "Redundant control dependency",
+            "desc": "Redundant statements that are control dependent.",
+            "msg_templ": "In file ${si.filename}, function ${si.func}, the statement at line ${si.line} is redundant.",
+            "severity": "L",
+            "likelihood": "U",
+            "cost": "M",
+            "standards": {},
+            "csv_string": [
+                "RCD0"
+            ],
+            "ruleSet": {
+                "id": "X",
+                "code": "BUILTIN",
+                "displayName": "XCALIBYTE"
+            },
+            "details": "#### Abstract\nRedundant statements that are control dependent.\n\n#### Explanation\nWhen there are two conditional statements that are dependent in execution flow, then one conditional can logically subsume the other conditional statement. In that case, the other conditional is redundant and unnecessary. This could be due to an editing error and is a code quality issue.\n",
+            "examples": {
+                "good": {},
+                "bad": {
+                    "general": [
+                        "int foo();\nint bar();\n\nint f1(int x) {\n if (x>15 && x>16) // x>16 will subsume x>15\n foo();\n}\n\nint f2(int x) {\n if (x>16 && x>15) // x>16 implies x>15, hence x>15 is redundant\n foo();\n}\n\nint f3(int x) {\n if (x>16) {\n foo();\n if (x>15) // x>16 implies x>15, hence this check is unnecessary\n bar();\n }\n}\n\nint f4(int x) {\n if (x>15) {\n foo();\n if (x>16) // x>15 does not imply x>16, this check is not redundant\n bar();\n }\n}"
+                    ]
+                }
+            }
+        },
+        {
+            "master_id": 113,
+            "category": "VUL",
+            "language": "Java",
+            "code": "OBJ01-J",
+            "name": "Field accessibility of an object must be managed properly",
+            "desc": "The program might expose sensitive fields through using a public modifier.",
+            "msg_templ": "",
+            "severity": "M",
+            "likelihood": "L",
+            "cost": "M",
+            "standards": {
+                "owasp": [
+                    "A5"
+                ],
+                "cwe": [
+                    "766"
+                ]
+            },
+            "csv_string": [
+                "O01J0"
+            ],
+            "ruleSet": {
+                "id": "S",
+                "code": "CERT",
+                "displayName": "CERT"
+            },
+            "details": "#### Abstract\nThe program might expose sensitive fields through using a public modifier.\n",
+            "examples": {
+                "good": {
+                    "java": [
+                        "import java.util.List;\n\npublic class j_obj01_0 {\n\n  private static final String[] items = {\"abc\", \"def\", \"ghj\"/* ... */};\n\n  public static final List<String> itemsList =\n    Collections.unmodifiableList(Arrays.asList(items));\n\n  public static final String[] getItems() {\n    return items.clone();\n  }\n  public static final String getItem(int index) {\n    return items[index];\n  }\n\n  public static final int getItemCount() {\n    return items.length;\n  }\n\n  private static final HashMap<Integer, String> hm = new HashMap<Integer, String>();\n\n  public static String getElement(int key) {\n    return hm.get(key);\n  }\n\n  private int total; // Declared private\n\n  public int getTotal () {\n    return total;\n  }\n\n}"
+                    ]
+                },
+                "bad": {
+                    "java": [
+                        "import java.util.List;\n\npublic class j_obj01_0 {\n\n  private static final String[] items = {\"abc\", \"def\", \"ghj\"/* ... */};\n\n  public static final List<String> itemsList =\n    Collections.unmodifiableList(Arrays.asList(items));\n\n  public static final String[] getItems() {\n    return items.clone();\n  }\n  public static final String getItem(int index) {\n    return items[index];\n  }\n\n  public static final int getItemCount() {\n    return items.length;\n  }\n\n  private static final HashMap<Integer, String> hm = new HashMap<Integer, String>();\n\n  public static String getElement(int key) {\n    return hm.get(key);\n  }\n\n  public int total; // Unprotected\n\n  public int getTotal () {\n    return total;\n  }\n\n}"
+                    ]
+                }
+            }
+        },
+        {
+            "master_id": 114,
+            "category": "VUL",
+            "language": "Java",
+            "code": "OBJ13-J",
+            "name": "References to mutable objects should not be shown to client",
+            "desc": "The program is exposing reference mutable objects to the user side where they may be modified freely.",
+            "msg_templ": "",
+            "severity": "M",
+            "likelihood": "L",
+            "cost": "L",
+            "standards": {
+                "owasp": [
+                    "A2",
+                    "A3"
+                ]
+            },
+            "csv_string": [
+                "O13J1",
+                "O13J0"
+            ],
+            "ruleSet": {
+                "id": "S",
+                "code": "CERT",
+                "displayName": "CERT"
+            },
+            "details": "",
+            "examples": {
+                "good": {},
+                "bad": {}
+            }
+        },
+        {
+            "master_id": 125,
+            "category": "BAD_PRACTICE",
+            "language": "c/c++",
+            "code": "MSC30-C",
+            "name": "Do not use the rand() function for generating pseudorandom numbers",
+            "desc": "The program is using a pseudorandom number generator  that can produce a predictable sequence of numbers.",
+            "msg_templ": "In file ${si.filename}, line ${si.line}, function ${si.func} is using a pseudorandom number generator that might produce a predictable sequence of numbers.",
+            "severity": "M",
+            "likelihood": "U",
+            "cost": "L",
+            "standards": {
+                "owasp": [
+                    "A3"
+                ],
+                "cwe": [
+                    "327",
+                    "330",
+                    "338"
+                ]
+            },
+            "csv_string": [
+                "M30C2",
+                "M30C1",
+                "M30C0"
+            ],
+            "ruleSet": {
+                "id": "S",
+                "code": "CERT",
+                "displayName": "CERT"
+            },
+            "details": "#### Abstract\nThe program is using a pseudorandom number generator that can produce a predictable sequence of numbers.\n\n#### Explanation\nThe rand() function produces numbers that are not truly random and may have a short cycle. An attacker can guess the next value that will be generated. Programmers should use a better random function that is properly seeded.",
+            "examples": {
+                "good": {
+                    "c": [
+                        "#include <stdio.h>\n#include <stdlib.h>\n#include <time.h>\n\nvoid use_rand(void) {\n  int r;\n  int i;\n  time_t t;\n\n  // seeds the rand()\n  srand((unsigned) time(&t));\n  \n  // random is a better pseudorandom number generator\n  for (i = 0; i < 10; i++) {\n    r = random();\n    printf(\"Random %d is %d\\n\", i, r);\n  }\n  \n}\n"
+                    ]
+                },
+                "bad": {
+                    "c": [
+                        "#include <stdio.h>\n#include <stdlib.h>\n\nvoid use_rand(void) {\n  int r;\n  int i;\n\n  // the same sequence will be printed every time this function is called\n  for (i = 0; i < 10; i++) {\n    r = rand();\n    printf(\"Random %d is %d\\n\", i, r);\n  }\n  \n}\n"
+                    ]
+                }
+            }
+        },
+        {
+            "master_id": 126,
+            "category": "VUL",
+            "language": "c/c++",
+            "code": "INT32-C",
+            "name": "Make sure that operations on signed integers do not wraparound or overflow",
+            "desc": "The program has operations in expressions with signed integers that may cause integer overflow or wraparound",
+            "msg_templ": "",
+            "severity": "HIGH",
+            "likelihood": "LIKELY",
+            "cost": "HIGH",
+            "standards": {
+                "cwe": [
+                    "190",
+                    "191",
+                    "680"
+                ]
+            }
+        }
+    ],
+    "csvCodeMap": {
+        "S02C1": 42,
+        "S0200": 42,
+        "A38C2": 81,
+        "A38C1": 81,
+        "A38C0": 81,
+        "P30C0": 35,
+        "M33C0": 33,
+        "UAF1": 7,
+        "UAF0": 7,
+        "UDR5": 8,
+        "UDR4": 8,
+        "UDR3": 8,
+        "UDR2": 8,
+        "UDR1": 8,
+        "UDR0": 8,
+        "UIV0": 21,
+        "CRF0": 11,
+        "CSL0": 0,
+        "CSS0": 1,
+        "ECB1": 22,
+        "UIC0": 20,
+        "WRF0": 9,
+        "DDC1": 13,
+        "DDC0": 13
+    }
+}

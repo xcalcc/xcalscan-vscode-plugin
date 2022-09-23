@@ -1,0 +1,399 @@
+{
+    "name": "xcalscan-vscode-plugin",
+    "displayName": "Xcalscan",
+    "description": "Xcalscan vscode plugin",
+    "version": "0.0.0",
+    "publisher": "xcalibyte",
+    "icon": "resources/logo.png",
+    "engines": {
+        "vscode": "^1.32.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./dist/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "xcalscan.openScanResultWithBrowser",
+                "title": "%xcalscan.contributes.commands.openScanResultWithBrowser%",
+                "category": "xcalscan",
+                "icon": {
+                    "light": "resources/light/external-link.svg",
+                    "dark": "resources/dark/external-link.svg"
+                }
+            },
+            {
+                "command": "xcalscan.refresh",
+                "title": "%xcalscan.contributes.commands.refresh%",
+                "category": "xcalscan",
+                "icon": "$(refresh)"
+            },
+            {
+                "command": "xcalscan.search",
+                "title": "%xcalscan.contributes.commands.search%",
+                "category": "xcalscan",
+                "icon": "$(search)"
+            },
+            {
+                "command": "xcalscan.gotoSetting",
+                "title": "%xcalscan.contributes.commands.gotoSetting%",
+                "category": "xcalscan",
+                "icon": "$(settings-gear)"
+            },
+            {
+                "command": "xcalscan.login",
+                "title": "%xcalscan.contributes.commands.login%",
+                "category": "xcalscan",
+                "icon": "$(account)"
+            },
+            {
+                "command": "xcalscan.createOrScan",
+                "title": "%xcalscan.contributes.commands.createOrScan%",
+                "icon": "$(debug-start)"
+            },
+            {
+                "command": "xcalscan.unlink",
+                "title": "%xcalscan.contributes.commands.unlink%",
+                "icon": "$(clear-all)"
+            },
+            {
+                "command": "xcalscan.linkWithProject",
+                "title": "%xcalscan.contributes.commands.linkWithProject%",
+                "category": "xcalscan",
+                "icon": "$(link)"
+            },
+            {
+                "command": "xcalscan.projectView",
+                "title": "%xcalscan.contributes.commands.projectView%",
+                "category": "xcalscan",
+                "icon": "$(open-editors-view-icon)"
+            },
+            {
+                "command": "xcalscan.dsrView",
+                "title": "%xcalscan.contributes.commands.dsrView%",
+                "category": "xcalscan",
+                "icon": {
+                    "light": "resources/light/delta.svg",
+                    "dark": "resources/dark/delta.svg"
+                }
+            },
+            {
+                "command": "xcalscan.viewScanResult",
+                "title": "%xcalscan.contributes.commands.viewScanResult%",
+                "category": "xcalscan"
+            },
+            {
+                "command": "xcalscan.scanResultLoadCompleted",
+                "title": "-",
+                "category": "xcalscan"
+            },
+            {
+                "command": "xcalscan.selectIssueFile",
+                "title": "-",
+                "category": "xcalscan"
+            },
+            {
+                "command": "xcalscan.selectTracePath",
+                "title": "-",
+                "category": "xcalscan"
+            },
+            {
+                "command": "xcalscan.selectTracePathNode",
+                "title": "-",
+                "category": "xcalscan"
+            },
+            {
+                "command": "xcalscan.refreshMainTree",
+                "title": "-",
+                "category": "xcalscan"
+            },
+            {
+                "command": "xcalscan.refreshIssueTree",
+                "title": "-",
+                "category": "xcalscan"
+            },
+            {
+                "command": "xcalscan.refreshFavoriteTree",
+                "title": "-",
+                "category": "xcalscan"
+            },
+            {
+                "command": "xcalscan.setLoadingOfTree",
+                "title": "-",
+                "category": "xcalscan"
+            },
+            {
+                "command": "xcalscan.cancelLoadingOfTree",
+                "title": "-",
+                "category": "xcalscan"
+            },
+            {
+                "command": "xcalscan.updateIssueTreeByFileId",
+                "title": "-",
+                "category": "xcalscan"
+            },
+            {
+                "command": "xcalscan.toggleViewModeOfIssueList",
+                "title": "%xcalscan.contributes.commands.toggleViewModeOfIssueList%",
+                "category": "xcalscan",
+                "icon": {
+                    "light": "resources/light/switch.png",
+                    "dark": "resources/dark/switch.png"
+                }
+            }
+        ],
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "xcalscan-explorer",
+                    "title": "Xcalscan",
+                    "icon": "resources/icon.svg"
+                }
+            ]
+        },
+        "views": {
+            "xcalscan-explorer": [
+                {
+                    "id": "xcalscanMainTreeView",
+                    "name": "%xcalscan.contributes.views.xcalscanMainTreeView%",
+                    "when": "!xcalscan.isDsrView"
+                },
+                {
+                    "id": "xcalscanDsrTreeView",
+                    "name": "%xcalscan.contributes.views.xcalscanDsrTreeView%",
+                    "when": "xcalscan.isDsrView"
+                },
+                {
+                    "id": "xcalscanIssueTreeView",
+                    "name": "%xcalscan.contributes.views.xcalscanIssueTreeView%"
+                },
+                {
+                    "id": "xcalscanFavoriteTreeView",
+                    "name": "%xcalscan.contributes.views.xcalscanFavoriteTreeView%",
+                    "visibility": "collapsed"
+                }
+            ]
+        },
+        "menus": {
+            "explorer/context": [
+                {
+                    "command": "xcalscan.createOrScan",
+                    "group": "navigation"
+                }
+            ],
+            "view/title": [
+                {
+                    "command": "xcalscan.refresh",
+                    "when": "view == xcalscanMainTreeView || view == xcalscanDsrTreeView",
+                    "group": "navigation@0"
+                },
+                {
+                    "command": "xcalscan.gotoSetting",
+                    "when": "view == xcalscanMainTreeView || view == xcalscanDsrTreeView",
+                    "group": "navigation@1"
+                },
+                {
+                    "command": "xcalscan.createOrScan",
+                    "when": "view == xcalscanMainTreeView || view == xcalscanDsrTreeView",
+                    "group": "navigation@2"
+                },
+                {
+                    "command": "xcalscan.projectView",
+                    "when": "view == xcalscanDsrTreeView",
+                    "group": "navigation@3"
+                },
+                {
+                    "command": "xcalscan.dsrView",
+                    "when": "view == xcalscanMainTreeView && xcalscan.isShowDsrButton",
+                    "group": "navigation@4"
+                },
+                {
+                    "command": "xcalscan.search",
+                    "when": "view == xcalscanMainTreeView || view == xcalscanDsrTreeView",
+                    "group": "navigation@5"
+                },
+                {
+                    "command": "xcalscan.linkWithProject",
+                    "when": "view == xcalscanMainTreeView || view == xcalscanDsrTreeView",
+                    "group": "navigation@6"
+                },
+                {
+                    "command": "xcalscan.login",
+                    "when": "view == xcalscanMainTreeView || view == xcalscanDsrTreeView",
+                    "group": "navigation@7"
+                },
+                {
+                    "command": "xcalscan.toggleViewModeOfIssueList",
+                    "when": "view == xcalscanIssueTreeView && !xcalscan.isDsrView",
+                    "group": "navigation@0"
+                }
+            ],
+            "view/item/context": [
+                {
+                    "command": "xcalscan.openScanResultWithBrowser",
+                    "when": "view == xcalscanMainTreeView && viewItem == PROJECT",
+                    "group": "inline"
+                }
+            ],
+            "commandPalette": [
+                {
+                    "command": "xcalscan.login",
+                    "when": "true"
+                },
+                {
+                    "command": "xcalscan.gotoSetting",
+                    "when": "true"
+                },
+                {
+                    "command": "xcalscan.refresh",
+                    "when": "never"
+                },
+                {
+                    "command": "xcalscan.search",
+                    "when": "true"
+                },
+                {
+                    "command": "xcalscan.createOrScan",
+                    "when": "never"
+                },
+                {
+                    "command": "xcalscan.unlink",
+                    "when": "never"
+                },
+                {
+                    "command": "xcalscan.linkWithProject",
+                    "when": "never"
+                },
+                {
+                    "command": "xcalscan.viewScanResult",
+                    "when": "never"
+                },
+                {
+                    "command": "xcalscan.scanResultLoadCompleted",
+                    "when": "never"
+                },
+                {
+                    "command": "xcalscan.selectIssueFile",
+                    "when": "never"
+                },
+                {
+                    "command": "xcalscan.selectTracePath",
+                    "when": "never"
+                },
+                {
+                    "command": "xcalscan.selectTracePathNode",
+                    "when": "never"
+                },
+                {
+                    "command": "xcalscan.refreshMainTree",
+                    "when": "never"
+                },
+                {
+                    "command": "xcalscan.refreshIssueTree",
+                    "when": "never"
+                },
+                {
+                    "command": "xcalscan.refreshFavoriteTree",
+                    "when": "never"
+                },
+                {
+                    "command": "xcalscan.setLoadingOfTree",
+                    "when": "never"
+                },
+                {
+                    "command": "xcalscan.cancelLoadingOfTree",
+                    "when": "never"
+                },
+                {
+                    "command": "xcalscan.updateIssueTreeByFileId",
+                    "when": "never"
+                },
+                {
+                    "command": "xcalscan.toggleViewModeOfIssueList",
+                    "when": "never"
+                }
+            ]
+        },
+        "configuration": {
+            "type": "object",
+            "title": "Xcalscan",
+            "properties": {
+                "xcalscan.MandatoryClientPath": {
+                    "type": "string",
+                    "default": "",
+                    "description": "%xcalscan.contributes.configuration.MandatoryClientPath%"
+                },
+                "xcalscan.MandatoryServerAddress": {
+                    "type": "string",
+                    "default": "",
+                    "description": "%xcalscan.contributes.configuration.MandatoryServerAddress%"
+                },
+                "xcalscan.OptionalServerAccessToken": {
+                    "type": "string",
+                    "default": "",
+                    "description": "%xcalscan.contributes.configuration.OptionalServerAccessToken%"
+                },
+                "xcalscan.OptionalServerAccessTokenType": {
+                    "type": "string",
+                    "default": "",
+                    "description": "%xcalscan.contributes.configuration.OptionalServerAccessTokenType%"
+                },
+                "xcalscan.OptionalServerProjectID": {
+                    "type": "string",
+                    "default": "",
+                    "description": "%xcalscan.contributes.configuration.OptionalServerProjectID%",
+                    "scope": "resource"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "compile": "tsc -p ./",
+        "lint": "eslint src --ext ts",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "test": "node ./dist/test/runTest.js",
+        "build": "vsce package",
+        "vscode:prepublish": "webpack --mode production",
+        "webpack": "webpack --mode development",
+        "webpack-dev": "webpack --mode development --watch"
+    },
+    "devDependencies": {
+        "@types/glob": "^7.1.1",
+        "@types/mkdirp": "^1.0.0",
+        "@types/mocha": "^7.0.2",
+        "@types/node": "^13.11.0",
+        "@types/rimraf": "^3.0.0",
+        "@types/tmp": "^0.2.0",
+        "@types/vscode": "^1.32.0",
+        "@typescript-eslint/eslint-plugin": "^2.26.0",
+        "@typescript-eslint/parser": "^2.26.0",
+        "eslint": "^6.8.0",
+        "glob": "^7.1.6",
+        "mocha": "^7.1.1",
+        "ts-loader": "^8.0.7",
+        "typescript": "^3.8.3",
+        "vscode-test": "^1.3.0",
+        "webpack": "^5.2.0",
+        "webpack-cli": "^4.1.0"
+    },
+    "dependencies": {
+        "@types/markdown-it": "^10.0.1",
+        "@types/uuid": "^8.3.0",
+        "axios": "^0.19.2",
+        "form-data": "^3.0.0",
+        "log4js": "^6.2.1",
+        "markdown-it": "^11.0.0",
+        "open": "^7.2.1",
+        "simple-git": "^2.48.0",
+        "uuid": "^8.3.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/xcalcc/xcalscan-vscode-plugin.git"
+    }
+}

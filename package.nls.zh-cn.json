@@ -1,0 +1,23 @@
+{
+    "xcalscan.contributes.commands.openScanResultWithBrowser": "在浏览器中查看扫描结果",
+    "xcalscan.contributes.commands.refresh": "刷新",
+    "xcalscan.contributes.commands.search": "搜索",
+    "xcalscan.contributes.commands.projectView": "项目视图",
+    "xcalscan.contributes.commands.dsrView": "增量视图",
+    "xcalscan.contributes.commands.gotoSetting": "设置",
+    "xcalscan.contributes.commands.login": "登录/登出",
+    "xcalscan.contributes.commands.createOrScan": "xcalscan:扫描项目",
+    "xcalscan.contributes.commands.unlink": "解除项目关联",
+    "xcalscan.contributes.commands.linkWithProject": "关联项目",
+    "xcalscan.contributes.commands.viewScanResult": "显示缺陷列表",
+    "xcalscan.contributes.commands.toggleViewModeOfIssueList": "切换显示方式",
+    "xcalscan.contributes.views.xcalscanMainTreeView": "我的项目",
+    "xcalscan.contributes.views.xcalscanDsrTreeView": "扫描记录",
+    "xcalscan.contributes.views.xcalscanIssueTreeView": "缺陷列表",
+    "xcalscan.contributes.views.xcalscanFavoriteTreeView": "搜索结果",
+    "xcalscan.contributes.configuration.MandatoryClientPath": "Xcalscan客户端路径",
+    "xcalscan.contributes.configuration.MandatoryServerAddress": "xcalscan的服务器地址 (例: http://127.0.0.1)",
+    "xcalscan.contributes.configuration.OptionalServerAccessToken": "自动生成，无需输入或修改",
+    "xcalscan.contributes.configuration.OptionalServerAccessTokenType": "自动生成，无需输入或修改",
+    "xcalscan.contributes.configuration.OptionalServerProjectID": "项目ID (第一次扫描后自动生成，无需输入或修改)"
+}

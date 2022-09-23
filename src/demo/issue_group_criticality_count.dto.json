@@ -1,0 +1,31 @@
+{
+    "S": {
+        "displayName": "XCALIBYTE",
+        "issueCount": 30,
+        "HIGH": {
+            "issueCount": 6,
+            "rule": {
+                "RCD0": 5,
+                "M02J1": 1
+            }
+        },
+        "MEDIUM": {
+            "issueCount": 10,
+            "rule": {
+                "E08J2": 3,
+                "M02J1": 7
+            }
+        },
+        "LOW": {
+            "issueCount": 14,
+            "rule": {
+                "F16J1": 10,
+                "DBZ0": 4
+            }
+        }
+    },
+    "X": {
+        "displayName": "CERT",
+        "...": "..."
+    }
+}

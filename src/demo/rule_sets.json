@@ -1,0 +1,83 @@
+{
+    "status": "success",
+    "dataVersion": {
+        "xcalscan_rule_version": "V1.91-0506",
+        "copyright": "(C) 2021 Xcalibyte Inc."
+    },
+    "data": [
+        {
+            "id": "S",
+            "code": "CERT",
+            "displayName": "CERT",
+            "rules": [
+                {
+                    "core_string": "STR02-C",
+                    "csv_string": "S02C1",
+                    "severity": "H",
+                    "likelihood": "L",
+                    "cost": "M",
+                    "master_id": 43,
+                    "id": 4,
+                    "ruleSetId": "S",
+                    "ruleSet": {
+                        "id": "S",
+                        "code": "CERT",
+                        "displayName": "CERT"
+                    }
+                },
+                {
+                    "core_string": "STR02-C",
+                    "csv_string": "S0200",
+                    "severity": "H",
+                    "likelihood": "L",
+                    "cost": "M",
+                    "master_id": 43,
+                    "id": 5,
+                    "ruleSetId": "S",
+                    "ruleSet": {
+                        "id": "S",
+                        "code": "CERT",
+                        "displayName": "CERT"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "X",
+            "code": "BUILTIN",
+            "displayName": "XCALIBYTE",
+            "rules": [
+                {
+                    "core_string": "AOB",
+                    "csv_string": "AOB4",
+                    "severity": "H",
+                    "likelihood": "L",
+                    "cost": "H",
+                    "master_id": 11,
+                    "id": 2,
+                    "ruleSetId": "X",
+                    "ruleSet": {
+                        "id": "X",
+                        "code": "BUILTIN",
+                        "displayName": "XCALIBYTE"
+                    }
+                },
+                {
+                    "core_string": "",
+                    "csv_string": "AOB3",
+                    "severity": "H",
+                    "likelihood": "L",
+                    "cost": "H",
+                    "master_id": 11,
+                    "id": 3,
+                    "ruleSetId": "X",
+                    "ruleSet": {
+                        "id": "X",
+                        "code": "BUILTIN",
+                        "displayName": "XCALIBYTE"
+                    }
+                }
+            ]
+        }
+    ]
+}

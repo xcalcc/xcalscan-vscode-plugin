@@ -1,0 +1,1 @@
+export const replaceSpecialChars = (str: string) => str.replace(/[^\w]|_/ig, '');

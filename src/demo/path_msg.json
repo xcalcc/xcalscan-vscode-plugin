@@ -1,0 +1,45 @@
+{
+    "status": "success",
+    "dataVersion": {
+        "xcalscan_rule_version": "V1.91-0506",
+        "copyright": "(C) 2021 Xcalibyte Inc."
+    },
+    "data": [
+        {
+            "id": 0,
+            "msg": "Illegal path message"
+        },
+        {
+            "id": 1,
+            "msg": "Value copied"
+        },
+        {
+            "id": 2,
+            "msg": "Function called"
+        },
+        {
+            "id": 3,
+            "msg": "Vulnerable point"
+        },
+        {
+            "id": 24,
+            "msg": "Condition set false"
+        },
+        {
+            "id": 26,
+            "msg": "\"else\" block taken"
+        },
+        {
+            "id": 27,
+            "msg": "Value propagated"
+        },
+        {
+            "id": 65,
+            "msg": "file opened with \"r\" attribute and assigned to file handle"
+        },
+        {
+            "id": 66,
+            "msg": "file handle checked and validated"
+        }
+    ]
+}

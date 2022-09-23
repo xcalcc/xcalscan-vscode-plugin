@@ -1,0 +1,22 @@
+{
+    "criticalityRuleCodeCountMap": {
+        "HIGH": {
+            "P35C0": "1",
+            "E33C0": "5",
+            "MSF2": "1",
+            "DBF0": "7",
+            "UIV0": "2",
+            "NPD0": "112",
+            "UAF3": "3"
+        },
+        "MEDIUM": {
+            "UDR5": "2",
+            "UIV0": "57",
+            "AOB4": "8"
+        },
+        "LOW": {
+            "F42C2": "1",
+            "DBZ2": "2"
+        }
+    }
+}

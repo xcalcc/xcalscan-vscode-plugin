@@ -1,0 +1,225 @@
+{
+    "status": "success",
+    "data": {
+        "cwe": {
+            "20": {
+                "standard_name": "Improper Input Validation",
+                "url": "https://cwe.mitre.org/data/definitions/20.html",
+                "csv_codes": [
+                    "F30C1",
+                    "F30C0"
+                ]
+            },
+            "22": {
+                "standard_name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+                "url": "https://cwe.mitre.org/data/definitions/22.html",
+                "csv_codes": []
+            },
+            "23": {
+                "standard_name": "Relative Path Traversal",
+                "url": "https://cwe.mitre.org/data/definitions/23.html",
+                "csv_codes": [
+                    "F02C0"
+                ]
+            },
+            "28": {
+                "standard_name": "Path Traversal: '..\\filedir'",
+                "url": "https://cwe.mitre.org/data/definitions/28.html",
+                "csv_codes": [
+                    "F02C6",
+                    "F02C5",
+                    "F02C4",
+                    "F02C3",
+                    "F02C2",
+                    "F02C1",
+                    "F02C0"
+                ]
+            }
+        },
+        "p3c": {
+            "1": {
+                "standard_name": "User-owned pages or functions must be authorized.",
+                "url": "https://alibaba.github.io/Alibaba-Java-Coding-Guidelines/#5-security-specification",
+                "csv_codes": [
+                    "I15J2",
+                    "I15J1",
+                    "I15J0"
+                ]
+            },
+            "2": {
+                "standard_name": "Direct display of user sensitive data is not allowed. Displayed data must be desensitized.",
+                "url": "https://alibaba.github.io/Alibaba-Java-Coding-Guidelines/#5-security-specification",
+                "csv_codes": [
+                    "I03J2",
+                    "I03J1",
+                    "I03J0"
+                ]
+            },
+            "3": {
+                "standard_name": "SQL parameter entered by users should be checked carefully or limited by METADATA, to prevent SQL injection. Database access by string concatenation SQL is forbidden.",
+                "url": "https://alibaba.github.io/Alibaba-Java-Coding-Guidelines/#5-security-specification",
+                "csv_codes": [
+                    "I00J3",
+                    "I00J2",
+                    "I00J1",
+                    "I00J0"
+                ]
+            },
+            "4": {
+                "standard_name": "It is forbidden to output user data to HTML page without security filtering or proper escaping.",
+                "url": "https://alibaba.github.io/Alibaba-Java-Coding-Guidelines/#5-security-specification",
+                "csv_codes": [
+                    "I16J1",
+                    "I11J1",
+                    "I11J0",
+                    "I07J1",
+                    "I07J0"
+                ]
+            },
+            "5": {
+                "standard_name": "It is forbidden to output user data to HTML page without security filtering or proper escaping.",
+                "url": "https://alibaba.github.io/Alibaba-Java-Coding-Guidelines/#5-security-specification",
+                "csv_codes": [
+                    "I00J3",
+                    "I00J2",
+                    "I00J1",
+                    "I00J0"
+                ]
+            },
+            "6": {
+                "standard_name": "Form and AJAX submission must be filtered by CSRF security check.",
+                "url": "https://alibaba.github.io/Alibaba-Java-Coding-Guidelines/#5-security-specification",
+                "csv_codes": []
+            },
+            "7": {
+                "standard_name": "It is necessary to use the correct anti-replay restrictions, such as number restriction, fatigue control, verification code checking, to avoid abusing of platform resources, such as text messages, e-mail, telephone, order, payment.",
+                "url": "https://alibaba.github.io/Alibaba-Java-Coding-Guidelines/#5-security-specification",
+                "csv_codes": [
+                    "I15J2",
+                    "I15J1",
+                    "I15J0"
+                ]
+            },
+            "8": {
+                "standard_name": "In scenarios when users generate content (e.g., posting, comment, instant messages), anti-scam word filtering and other risk control strategies must be applied.",
+                "url": "https://alibaba.github.io/Alibaba-Java-Coding-Guidelines/#5-security-specification",
+                "csv_codes": []
+            }
+        },
+        "owasp": {
+            "A1": {
+                "standard_name": "Injection",
+                "url": "https://owasp.org/www-project-top-ten/2017/A1_2017-Injection",
+                "csv_codes": [
+                    "FMT2",
+                    "FMT1",
+                    "FMT0",
+                    "UAF3",
+                    "I54J0"
+                ]
+            },
+            "A2": {
+                "standard_name": "Broken Authentication",
+                "url": "https://owasp.org/www-project-top-ten/2017/A2_2017-Broken_Authentication",
+                "csv_codes": [
+                    "UDR5",
+                    "UDR4",
+                    "C03J0"
+                ]
+            },
+            "A3": {
+                "standard_name": "Sensitive Data Exposure",
+                "url": "https://owasp.org/www-project-top-ten/2017/A3_2017-Sensitive_Data_Exposure",
+                "csv_codes": [
+                    "FMT2",
+                    "FMT1",
+                    "C04J0",
+                    "M30C2",
+                    "M30C1",
+                    "M30C0"
+                ]
+            },
+            "A4": {
+                "standard_name": "XML External Entities (XXE)",
+                "url": "https://owasp.org/www-project-top-ten/2017/A4_2017-XML_External_Entities_(XXE)",
+                "csv_codes": [
+                    "I16J1",
+                    "I16J0",
+                    "I17J2",
+                    "I17J1",
+                    "I17J0"
+                ]
+            },
+            "A5": {
+                "standard_name": "Broken Access Control",
+                "url": "https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control",
+                "csv_codes": [
+                    "WRF0",
+                    "C03J0",
+                    "C04J2",
+                    "C04J1",
+                    "C04J0"
+                ]
+            },
+            "A6": {
+                "standard_name": "Security Misconfiguration",
+                "url": "https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration",
+                "csv_codes": [
+                    "FMT2",
+                    "FMT1",
+                    "FMT0",
+                    "FAM2",
+                    "FAM1",
+                    "FAM0",
+                    "N03J2",
+                    "N03J1",
+                    "N03J0",
+                    "C02J1",
+                    "C02J0",
+                    "C04J2",
+                    "C04J1",
+                    "C04J0"
+                ]
+            },
+            "A7": {
+                "standard_name": "Cross-Site Scripting (XSS)",
+                "url": "https://owasp.org/www-project-top-ten/2017/A7_2017-Cross-Site_Scripting_(XSS)",
+                "csv_codes": [
+                    "P30C1",
+                    "P30C0",
+                    "I01J2",
+                    "I01J1",
+                    "I01J0",
+                    "I11J2",
+                    "I11J1",
+                    "I11J0"
+                ]
+            },
+            "A8": {
+                "standard_name": "Insecure Deserialization",
+                "url": "https://owasp.org/www-project-top-ten/2017/A8_2017-Insecure_Deserialization",
+                "csv_codes": [
+                    "R01J0"
+                ]
+            },
+            "A9": {
+                "standard_name": "Using Components with Known Vulnerabilities",
+                "url": "https://owasp.org/www-project-top-ten/2017/A9_2017-Using_Components_with_Known_Vulnerabilities",
+                "csv_codes": [
+                    "C07J0",
+                    "N06J2",
+                    "N06J1",
+                    "N06J0"
+                ]
+            },
+            "A10": {
+                "standard_name": "Insufficient Logging & Monitoring",
+                "url": "https://owasp.org/www-project-top-ten/2017/A10_2017-Insufficient_Logging%2526Monitoring",
+                "csv_codes": [
+                    "E08J0",
+                    "E00J0"
+                ]
+            }
+        }
+    }
+}

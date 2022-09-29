@@ -3513,9 +3513,9 @@ write@1.0.3:
   dependencies:
     mkdirp "^0.5.1"
 
-"xcallogger-node@ssh://git@gitlab.com:xc5sz/xcallogger.git#master":
+"xcallogger-node@git+https://github.com/xcalcc/xcallogger.git#master":
   version "1.0.0"
-  resolved "ssh://git@gitlab.com:xc5sz/xcallogger.git#496a1f8e34b5eb1338fed3c1f950db6c3d5ca1c8"
+  resolved "git+https://github.com/xcalcc/xcallogger.git#master#e81a69faf0cbe78a461c2acc46e2e0dc192ecad8"
   dependencies:
     "@elastic/ecs-winston-format" "^0.3.0"
     "@elastic/elasticsearch" "^7.10.0"
